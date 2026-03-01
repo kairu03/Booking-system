@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from 'dotenv';
 import helmet from "helmet";
 
+import authRoutes from './modules/auth/authRoutes.js'
+
 // load environment variables
 dotenv.config();
 
@@ -18,5 +20,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Booking system api is running');
 });
+
+app.use('/api/auth', authRoutes);
 
 export default app;

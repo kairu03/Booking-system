@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 export const userSchema = new mongoose.Schema({
   name: {
@@ -19,22 +20,19 @@ export const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: [ 'admin', 'user' ],
+    enum: ['admin', 'user'],
     default: 'user'
   }
 }, { timestamps: true });
 
 // hash password
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function () {
 
-  // if password is not new & is not modified, next() to save to DB
-  if (!this.isModified('password')) {
-    return next();
-  } else {
-    // hash if password is new, next() to save to DB
-    this.password = await bcrypt.hash(this.password, 10);
-    next();
-  }
+  // if password is not new & is not modified, next() to save to DB 
+  if (!this.isModified('password')) return;
+
+  // hash if password is new, next() to save to DB
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
 const User = mongoose.model('User', userSchema);
