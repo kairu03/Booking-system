@@ -11,9 +11,12 @@ const app = express();
 // secure HTTP headers
 app.use(helmet());
 
+// json body parser
+app.use(express.json());
+
 // test route
 app.get('/', (req, res) => {
-  res.send('Booking system API is running');
+  res.send('Booking system api is running');
 });
 
 export default app;
