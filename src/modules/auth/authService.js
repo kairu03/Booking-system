@@ -30,7 +30,8 @@ export const registerUser = async ({ name, email, password }) => {
     user: {
       id: newUser._id,
       name: newUser.name,
-      email: newUser.email
+      email: newUser.email,
+      role: newUser.role
     },
     token
   }
@@ -62,8 +63,9 @@ export const loginUser = async ({ email, password }) => {
     message: 'Login successful',
     user: {
       id: user._id,
-      email: user.name,
-      password: user.password
+      name: user.name,
+      email: user.email,
+      role: user.role
     },
     token
   }
