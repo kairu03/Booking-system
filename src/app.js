@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import helmet from "helmet";
 
 import authRoutes from './modules/auth/authRoutes.js'
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 // load environment variables
 dotenv.config();
@@ -22,5 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+
+app.use(errorHandler);
 
 export default app;

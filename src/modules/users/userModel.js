@@ -6,6 +6,7 @@ export const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
   email: {
     type: String,
     required: true,
@@ -13,11 +14,13 @@ export const userSchema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
+
   password: {
     type: String,
     required: true,
     select: false
   },
+
   role: {
     type: String,
     enum: ['admin', 'user'],
@@ -27,7 +30,6 @@ export const userSchema = new mongoose.Schema({
 
 // hash password
 userSchema.pre('save', async function () {
-
   // if password is not new & is not modified, next() to save to DB 
   if (!this.isModified('password')) return;
 
