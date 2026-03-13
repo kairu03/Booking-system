@@ -4,6 +4,7 @@ import helmet from "helmet";
 
 import authRoutes from './modules/auth/authRoutes.js';
 import categoryRoutes from './modules/categories/categoryRoutes.js';
+import resourceRoutes from './modules/resources/resourceRoutes.js';
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 // load environment variables
@@ -24,7 +25,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
-app.use('/api/categories', categoryRoutes)
+app.use('/api/categories', categoryRoutes);
+app.use('/api/resources', resourceRoutes);
 
 app.use(errorHandler);
 

@@ -31,11 +31,13 @@ export const categorySchema = new mongoose.Schema({
   },
 
   user: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'user'
+    ref: 'User'
   }
 }, { timestamps: true });
+
+categorySchema.index({ isActive: 1 });
 
 // to auto generate slug from name before saving in DB, if name is new
 categorySchema.pre('save', function () {
