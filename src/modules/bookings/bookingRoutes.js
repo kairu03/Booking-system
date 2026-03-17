@@ -1,7 +1,7 @@
 import express from "express";
-import { protectRoute } from '../../middlewares/authMiddleware.js'
+import { protectRoute } from '../../middlewares/auth.js'
 import { cancelBooking, createBooking, getAllBookings, getMyBookings, updateBookingStatus } from "./bookingController.js";
-import { authorizeRoles } from "../../middlewares/roleMiddleware.js";
+import { authorizeRoles } from "../../middlewares/role.js";
 
 const router = express.Router();
 

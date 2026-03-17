@@ -1,6 +1,6 @@
 import express from "express";
-import { protectRoute } from '../../middlewares/authMiddleware.js';
-import { authorizeRoles } from '../../middlewares/roleMiddleware.js';
+import { protectRoute } from '../../middlewares/auth.js';
+import { authorizeRoles } from '../../middlewares/role.js';
 import { createCategory, deleteCategory, getAllCategories, getCategoryById, updateCategory } from "./categoryController.js";
 import resourceRoutes from '../../modules/resources/resourceRoutes.js';
 

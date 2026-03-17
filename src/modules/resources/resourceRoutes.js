@@ -1,8 +1,8 @@
 import express from "express";
-import { protectRoute } from '../../middlewares/authMiddleware.js'
+import { protectRoute } from '../../middlewares/auth.js'
 import { createResource, deleteResource, getAllResource, getResourceById, updateResource } from "./resourceController.js";
-import { authorizeRoles } from "../../middlewares/roleMiddleware.js";
-import { attachCategory } from "../../middlewares/categoryMiddleware.js";
+import { authorizeRoles } from "../../middlewares/role.js";
+import { attachCategory } from "../../middlewares/attachCategory.js";
 
 const router = express.Router({ mergeParams: true });
 

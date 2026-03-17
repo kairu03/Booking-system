@@ -33,11 +33,14 @@ export const createBooking = async ({ userId, resourceId, startDate, endDate }) 
     throw new ApiError('Resource not found', 404);
   }
 
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
   const overlappedBooking = await Booking.findOne({
     resource: resourceId,
-    status: 'approved',
-    startDate: { $lt: endDate },
-    endDate: { $gt: startDate }
+    status: { $in: [ 'approved', 'pending' ]},
+    startDate: { $lt: end },
+    endDate: { $gt: start }
   });
 
   if (overlappedBooking) {

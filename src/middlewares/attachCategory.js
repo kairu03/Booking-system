@@ -17,4 +17,4 @@ export const attachCategory = asyncHandler(async (req, res, next) => {
   req.category = category;
 
   next();
-})
+});
