@@ -2,7 +2,6 @@ import { asyncHandler } from '../../utils/asyncHandler.js';
 import * as bookingService from '.././bookings/bookingService.js';
 
 
-
 // GET 
 export const getAllBookings = asyncHandler(async (req, res) => {
   const bookings = await bookingService.getAllBookings();

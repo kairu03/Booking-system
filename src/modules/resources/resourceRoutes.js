@@ -6,6 +6,7 @@ import { attachCategory } from "../../middlewares/attachCategory.js";
 
 const router = express.Router({ mergeParams: true });
 
+// add protecRoute to all routes
 router.use(protectRoute);
 
 router.get('/', getAllResource);

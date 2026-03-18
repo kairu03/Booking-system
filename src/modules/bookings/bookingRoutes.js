@@ -5,6 +5,7 @@ import { authorizeRoles } from "../../middlewares/role.js";
 
 const router = express.Router();
 
+// add protecRoute to all routes
 router.use(protectRoute);
 
 router.get('/', authorizeRoles('admin') , getAllBookings);

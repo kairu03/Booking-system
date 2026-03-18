@@ -4,7 +4,7 @@ import slugify from 'slugify';
 export const categorySchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [ true, 'Category name is required' ],
+    required: true,
     unique: true,
     trim: true
   },
