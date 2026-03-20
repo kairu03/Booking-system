@@ -19,14 +19,14 @@ export const createResourceSchema = Joi.object({
   capacity: resourceFields.capacity.required().messages({
     'any.required': 'Capacity is required',
   }),
-  price: resourceFields.price.required.messages({
+  price: resourceFields.price.required().messages({
     'any.required': 'Price is required',
   }),
-  pricingType: resourceFields.pricingType.required.messages({
+  pricingType: resourceFields.pricingType.required().messages({
     'any.required': 'Pricing type is required'
   }),
   description: resourceFields.description.optional().allow(''),
-  amenities: resourceFields.amenities.optional.allow(''),
+  amenities: resourceFields.amenities.optional().allow(''),
   images: resourceFields.images.optional().allow(''),
 });
 
