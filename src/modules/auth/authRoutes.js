@@ -6,7 +6,7 @@ import { loginLimiter, registerLimiter } from '../../middlewares/ratelimit/authL
 
 const router = express.Router()
 
-router.post('/login', registerLimiter, validate(loginSchema), userLogin);
-router.post('/register', loginLimiter, validate(registerSchema), userRegister);
+router.post('/login', loginLimiter, validate(loginSchema), userLogin);
+router.post('/register', registerLimiter, validate(registerSchema), userRegister);
 
 export default router;
