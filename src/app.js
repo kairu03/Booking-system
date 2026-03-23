@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from 'dotenv';
 import helmet from "helmet";
 import ExpressMongoSanitize from "express-mongo-sanitize";
+import morgan from "morgan";
 
 
 import authRoutes from './modules/auth/authRoutes.js';
@@ -25,6 +26,16 @@ app.use(helmet());
 
 // json body parser
 app.use(express.json());
+
+// sends logs to winston thru logger.info after trim
+app.use(
+  morgan('combined', {
+    skip: (req, res) => res.statusCode < 400,
+    stream: {
+      write: (message) => loggers.info(message.trim())
+    }
+  })
+)
 
 // sanitize requests to prevent MongoDB injection
 app.use(ExpressMongoSanitize({ replaceWith: '_' }));
