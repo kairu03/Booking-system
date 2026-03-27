@@ -1,9 +1,13 @@
 import { request } from "express";
 import { asyncHandler } from "../../utils/asyncHandler.js";
-import { redis } from "../../config/redis.js";
+import { getRedis } from "../../config/redis.js";
 
 export const createLimiter = (prefix, maxRequests, windowSeconds, message, options = {}) => {
   return asyncHandler(async (req, res, next) => {
+
+    // lazy execution, use the Redis client that getRedis() created
+    const redis = getRedis();
+
     const userId = req.user.id;
     const ip = req.ip;
 
