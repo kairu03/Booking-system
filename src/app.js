@@ -1,9 +1,8 @@
 import express from "express";
 import dotenv from 'dotenv';
 import helmet from "helmet";
-import ExpressMongoSanitize from "express-mongo-sanitize";
 import morgan from "morgan";
-
+import mongoSanitize from "@exortek/express-mongo-sanitize";
 
 import authRoutes from './modules/auth/authRoutes.js';
 import categoryRoutes from './modules/categories/categoryRoutes.js';
@@ -38,7 +37,7 @@ app.use(
 )
 
 // sanitize requests to prevent MongoDB injection
-app.use(ExpressMongoSanitize({ replaceWith: '_' }));
+app.use(mongoSanitize({ replaceWith: '_'}));
 
 // enable trusting proxy headers for proper IP tracking (required for rate limiting)
 app.set('trust proxy', 1);
